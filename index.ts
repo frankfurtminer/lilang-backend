@@ -3,9 +3,11 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 const app = express();
+import cors from "cors";
 import wordsRouter from "./routes/words";
 app.use(express.json());
 app.use("/audio", express.static("./audio"));
+app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}));
 
 const PORT = process.env.PORT || 3001;
 
